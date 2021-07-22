@@ -4,10 +4,10 @@ public class LineProgressAware extends ProgressAware {
     private int lineLength;
 
     public LineProgressAware(int lineLength) {
-        if (lineLength < 0){
+        if (lineLength < 0) {
             throw new RuntimeException();
         }
-            this.lineLength = lineLength;
+        this.lineLength = lineLength;
     }
 
     @Override

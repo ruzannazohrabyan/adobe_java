@@ -3,7 +3,7 @@ package com.company.week3.homework_02;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        // write your code here
 /*
 xndir:
 stexcum enq ProgressAware class; classi karox e carayi UI applicationnerum progress cuyc talu hamar;
