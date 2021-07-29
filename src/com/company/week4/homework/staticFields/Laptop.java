@@ -8,10 +8,13 @@ public class Laptop {
     private static int countProtected;
 
     public Laptop(String vendor, String model) {
+        this.vendor = vendor;
+        this.model = model;
         countPublic++;
     }
 
     protected Laptop(String vendor) {
+        this.vendor = vendor;
         countProtected++;
     }
 
