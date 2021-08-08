@@ -19,7 +19,7 @@ public class UserGroup {
         this.users = new User[USER_COUNT];
         for (int i = 0; i < userGroup.actualCount; i++) {
             this.users[i] = (User) userGroup.users[i].clone();
-            actualCount++;
+            this.actualCount++;
         }
     }
 
