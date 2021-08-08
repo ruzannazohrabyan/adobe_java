@@ -25,10 +25,10 @@ public class UserGroup {
 
     public void addUser(User user) throws Exception {
         if (user == null) {
-            throw new NullPointerException("The User Is Null");
+            throw new NullPointerException("Provided User Is Null");
         }
         if (users.length == actualCount) {
-            throw new Exception("Group Is Full");
+            throw new Exception("Group Is Full. Limit is: " + USER_COUNT);
         }
 
         users[actualCount] = user;
