@@ -52,7 +52,7 @@ public final class Triangle {
         if (triangle == this) {
             return true;
         }
-        return this.point1 == triangle.point1 && this.point2 == triangle.point2 && this.point3 == triangle.point3;
+        return this.point1.equals(triangle.point1) && this.point2.equals(triangle.point2) && this.point3.equals(triangle.point3);
     }
 
     @Override
