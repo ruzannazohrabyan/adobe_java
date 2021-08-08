@@ -1,4 +1,4 @@
-package com.company.week5.homework.task1;
+package com.company.week4.homework.task1;
 
 //    Part 1: Implement a class named User with the following fields:
 //    firstName, lastName, username, email. Implement a copy method and copy constructor for this class.
