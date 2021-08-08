@@ -1,6 +1,6 @@
 package com.company.week4.homework.task2;
 
-public class MutablePoint implements Point, Cloneable {
+public class MutablePoint implements Point {
     public double x;
     public double y;
 
@@ -9,6 +9,11 @@ public class MutablePoint implements Point, Cloneable {
         this.y = y;
     }
 
+
+    @Override
+    public Point deepClone() {
+        return null;
+    }
 
     @Override
     public double getX() {
@@ -26,5 +31,10 @@ public class MutablePoint implements Point, Cloneable {
                 "x=" + x +
                 ", y=" + y +
                 '}';
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

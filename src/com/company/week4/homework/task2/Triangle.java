@@ -8,14 +8,19 @@ public final class Triangle {
     private final Point point2;
     private final Point point3;
 
-    public Triangle(Point point1, Point point2, Point point3) {
+    public Triangle(Point point1, Point point2, Point point3) throws CloneNotSupportedException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         AssertionUtils.assertNotNull(point1);
         AssertionUtils.assertNotNull(point2);
         AssertionUtils.assertNotNull(point3);
 
-        this.point1 = point1;
-        this.point2 = point2;
-        this.point3 = point3;
+        // Ays tarberakov drsic tvac Pointi cankacac subclass cast em anum ImmutablePoint-i, vorn im karciqov jisht chi
+        this.point1 = (Point)((ImmutablePoint)point1).clone();
+
+        // kam el reflectionov petq e anem
+        this.point2 = (Point) point2.getClass().getMethod("clone").invoke(point1);
+
+        // urish tarberak chgitem :(
+        this.point3 = point3.clone();
     }
 
     public Triangle(Triangle triangle) {

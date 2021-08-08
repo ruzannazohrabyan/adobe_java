@@ -1,6 +1,6 @@
 package com.company.week4.homework.task2;
 
-public final class ImmutablePoint implements Point {
+public final class ImmutablePoint implements Point, Cloneable {
     private final double x;
     private final double y;
 
@@ -52,14 +52,16 @@ public final class ImmutablePoint implements Point {
         return this.x == p.getX() && this.y == p.getY();
     }
 
-
-
-
     @Override
     public String toString() {
         return "ImmutablePoint{" +
                 "x=" + x +
                 ", y=" + y +
                 '}';
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }
