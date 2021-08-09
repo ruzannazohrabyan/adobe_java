@@ -49,7 +49,12 @@ public final class ImmutablePoint implements Point, Cloneable {
         if (p == this) {
             return true;
         }
-        return this.x == p.getX() && this.y == p.getY();
+        return p.getX() == getX() && p.getY() == getY();
+    }
+
+    @Override
+    public Point clone() {
+        return new ImmutablePoint(this);
     }
 
     @Override
@@ -58,14 +63,5 @@ public final class ImmutablePoint implements Point, Cloneable {
                 "x=" + x +
                 ", y=" + y +
                 '}';
-    }
-
-    @Override
-    public Point clone() {
-        try {
-            return (ImmutablePoint) super.clone();
-        } catch(CloneNotSupportedException ex) {
-            return new ImmutablePoint(this.getX(), this.getY());
-        }
     }
 }
