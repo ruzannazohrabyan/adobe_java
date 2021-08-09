@@ -14,7 +14,7 @@ public final class Triangle {
         AssertionUtils.assertNotNull(point3);
 
         // Ays tarberakov drsic tvac Pointi cankacac subclass cast em anum ImmutablePoint-i, vorn im karciqov jisht chi
-        this.point1 = (Point)((ImmutablePoint)point1).clone();
+        this.point1 = new ImmutablePoint(point1); // or ((ImmutablePoint)point1).clone();
 
         // kam el reflectionov petq e anem
         this.point2 = (Point) point2.getClass().getMethod("clone").invoke(point1);

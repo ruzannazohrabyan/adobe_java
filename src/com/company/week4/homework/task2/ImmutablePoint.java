@@ -61,7 +61,11 @@ public final class ImmutablePoint implements Point, Cloneable {
     }
 
     @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public Point clone() {
+        try {
+            return (ImmutablePoint) super.clone();
+        } catch(CloneNotSupportedException ex) {
+            return new ImmutablePoint(this.getX(), this.getY());
+        }
     }
 }
