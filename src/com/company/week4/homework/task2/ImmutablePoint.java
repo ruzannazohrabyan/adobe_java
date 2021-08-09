@@ -31,12 +31,12 @@ public final class ImmutablePoint implements Point, Cloneable {
     }
 
     @Override
-    public double getX() {
+    public final double getX() {
         return x;
     }
 
     @Override
-    public double getY() {
+    public final double getY() {
         return y;
     }
 
