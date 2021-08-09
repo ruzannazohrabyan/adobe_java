@@ -17,7 +17,7 @@ public final class Triangle {
         this.point1 = new ImmutablePoint(point1); // or ((ImmutablePoint)point1).clone();
 
         // kam el reflectionov petq e anem
-        this.point2 = (Point) point2.getClass().getMethod("clone").invoke(point1);
+        this.point2 = (Point) point2.getClass().getMethod("clone").invoke(point2);
 
         // urish tarberak chgitem :(
         this.point3 = point3.clone();

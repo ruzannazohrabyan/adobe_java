@@ -9,12 +9,6 @@ public class MutablePoint implements Point {
         this.y = y;
     }
 
-
-    @Override
-    public Point deepClone() {
-        return null;
-    }
-
     @Override
     public double getX() {
         return x;
