@@ -1,8 +1,5 @@
 package com.company.week4.homework.task2;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-
 public class Triangle {
 
     private final Point point1;
@@ -49,7 +46,7 @@ public class Triangle {
         if (triangle == this) {
             return true;
         }
-        return super.equals(triangle.point1) && super.equals(triangle.point2) && super.equals(triangle.point3);
+        return this.point1.equals(triangle.point1) && this.point2.equals(triangle.point2) && this.point3.equals(triangle.point3);
     }
 
     @Override

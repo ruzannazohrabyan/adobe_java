@@ -28,12 +28,14 @@ public final class ColoredTriangle extends Triangle {
             return true;
         }
         boolean result = super.equals(triangle);
-//        System.out.println(result);
+        if (triangle instanceof ColoredTriangle) {
+            return result && this.color.equals(((ColoredTriangle) triangle).color);
+        }
         return result;
     }
 
     @Override
     public String toString() {
-        return getPoint1() + ", " + getPoint2() + ", " + getPoint3() + ", " + this.getColor();
+        return super.toString() + ", " + getColor();
     }
 }

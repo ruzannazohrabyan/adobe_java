@@ -27,7 +27,8 @@ public class AssertionUtils {
     }
 
     public static void assertEquals(Triangle val1, Triangle val2) {
-        if (val1.equals(val2)) {
+
+    if (!(val1.equals(val2))) {
             throw new RuntimeException(val1 + " is not equal to " + val2);
         }
     }

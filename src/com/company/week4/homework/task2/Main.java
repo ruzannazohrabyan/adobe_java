@@ -16,7 +16,7 @@ public class Main {
         Triangle triangle2 = new Triangle(new ImmutablePoint(1, 2), new ImmutablePoint(6, 7), new ImmutablePoint(15, 16));
         System.out.println(triangle);
         System.out.println(triangle1);
-        ((MutablePoint)mutablePoint).setX(6);
+        ((MutablePoint) mutablePoint).setX(6);
         System.out.println(triangle);
         System.out.println(triangle1);
 
@@ -25,15 +25,13 @@ public class Main {
         Triangle coloredTriangle = new ColoredTriangle(triangle, Color.WHITE);
         Triangle coloredTriangle1 = new ColoredTriangle(triangle2, Color.BLUE);
 
-        AssertionUtils.assertEquals(coloredTriangle, coloredTriangle1);
+        AssertionUtils.assertEquals(coloredTriangle, coloredTriangle1); // At this point will throw an exception
         AssertionUtils.assertEquals(coloredTriangle1, triangle2);
         AssertionUtils.assertEquals(triangle, coloredTriangle);
         System.out.println(triangle1);
         System.out.println(triangle2);
-        AssertionUtils.assertEquals(triangle, triangle2);
+        AssertionUtils.assertEquals(triangle, triangle2); // At this point will throw an exception
 
 
-//        System.out.println(triangle1.getPoint1());
-//        System.out.println(triangle.getPoint1());
     }
 }
