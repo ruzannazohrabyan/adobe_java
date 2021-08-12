@@ -14,24 +14,24 @@ public class Main {
         Triangle triangle = new Triangle(p1, p2, mutablePoint);
         Triangle triangle1 = new Triangle(triangle);
         Triangle triangle2 = new Triangle(new ImmutablePoint(1, 2), new ImmutablePoint(6, 7), new ImmutablePoint(15, 16));
-        System.out.println(triangle);
-        System.out.println(triangle1);
-        ((MutablePoint) mutablePoint).setX(6);
-        System.out.println(triangle);
-        System.out.println(triangle1);
+//        System.out.println(triangle);
+//        System.out.println(triangle1);
+//        ((MutablePoint) mutablePoint).setX(6);
+//        System.out.println(triangle);
+//        System.out.println(triangle1);
 
 // Testing ColoredTriangle
+        try {
+            Triangle coloredTriangle = new ColoredTriangle(triangle, Color.WHITE);
+            Triangle coloredTriangle1 = new ColoredTriangle(triangle2, Color.BLUE);
 
-        Triangle coloredTriangle = new ColoredTriangle(triangle, Color.WHITE);
-        Triangle coloredTriangle1 = new ColoredTriangle(triangle2, Color.BLUE);
+            AssertionUtils.assertEquals(coloredTriangle1, triangle2);
+            AssertionUtils.assertEquals(triangle, coloredTriangle);
+            AssertionUtils.assertEquals(coloredTriangle, coloredTriangle1); // At this point will throw an exception
+//            AssertionUtils.assertEquals(triangle, triangle2); // At this point will throw an exception
 
-        AssertionUtils.assertEquals(coloredTriangle, coloredTriangle1); // At this point will throw an exception
-        AssertionUtils.assertEquals(coloredTriangle1, triangle2);
-        AssertionUtils.assertEquals(triangle, coloredTriangle);
-        System.out.println(triangle1);
-        System.out.println(triangle2);
-        AssertionUtils.assertEquals(triangle, triangle2); // At this point will throw an exception
-
-
+        } catch (RuntimeException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }

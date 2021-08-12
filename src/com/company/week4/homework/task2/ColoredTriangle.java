@@ -36,6 +36,11 @@ public final class ColoredTriangle extends Triangle {
 
     @Override
     public String toString() {
-        return super.toString() + ", " + getColor();
+        return "ColoredTriangle{" +
+                "point1=" + getPoint1() +
+                ", point2=" + getPoint2() +
+                ", point3=" + getPoint3() +
+                ", color=" + color +
+                '}';
     }
 }
