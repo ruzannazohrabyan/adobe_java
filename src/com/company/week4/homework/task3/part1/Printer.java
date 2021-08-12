@@ -1,10 +1,17 @@
-package com.company.week4.homework.task3;
+package com.company.week4.homework.task3.part1;
 
 import com.company.week4.homework.task1.User;
 import com.company.week4.homework.task1.UserGroup;
 import com.company.week4.homework.task2.*;
 
-public class Main {
+public class Printer {
+    public static void specialPrint(Object obj) {
+        System.out.println("******************************");
+        System.out.println(obj.toString());
+        System.out.println("******************************");
+        System.out.println();
+    }
+
     public static void main(String[] args) throws Exception {
         User user = new User("Anna", "Mamikonyan", "a.mamikonyan", "ffddf@gmail.com");
 
@@ -26,7 +33,5 @@ public class Main {
 
         Printer.specialPrint(triangle);
         Printer.specialPrint(coloredTriangle);
-
-
     }
 }
