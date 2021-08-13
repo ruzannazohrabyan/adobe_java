@@ -16,8 +16,7 @@ public class Main {
         while (n != 1) {
             char currentChar = result.charAt(0);
             int count = 1;
-            int i = 1;
-            for (; i < result.length(); i++) {
+            for (int i = 1; i < result.length(); i++) {
                 if (currentChar != result.charAt(i)) {
                     temp.append(count).append(currentChar);
                     currentChar = result.charAt(i);
