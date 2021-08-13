@@ -8,8 +8,8 @@ public class Main {
     }
 
     public static String lookAndSay(int n) {
-        if(n == 0) return "";
-        if(n == 1) return "1";
+        if (n == 0) return "";
+        if (n == 1) return "1";
 
         String result = "1";
         StringBuilder temp = new StringBuilder();
@@ -26,9 +26,7 @@ public class Main {
                     count++;
                 }
             }
-            if (i == result.length()) {
-                temp.append(count).append(currentChar);
-            }
+            temp.append(count).append(currentChar);
             n--;
             result = temp.toString();
             temp.setLength(0);
