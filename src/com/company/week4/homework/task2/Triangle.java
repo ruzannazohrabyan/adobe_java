@@ -33,7 +33,6 @@ public class Triangle {
     }
 
     public final Point getPoint3() {
-
         return new ImmutablePoint(point3);
     }
 

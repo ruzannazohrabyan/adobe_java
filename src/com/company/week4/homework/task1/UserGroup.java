@@ -7,7 +7,7 @@ import java.util.Arrays;
 //            1. addUser(User user): take into consideration the case when there is no space left in array.
 //            2. clone(): here you should implement deep clone functionality.
 public class UserGroup {
-    private final User[] users;
+    private User[] users;
     private int actualCount = 0;
     private final int USER_COUNT = 10;
 
@@ -18,7 +18,7 @@ public class UserGroup {
     private UserGroup(UserGroup userGroup) throws CloneNotSupportedException {
         this.users = new User[USER_COUNT];
         for (int i = 0; i < userGroup.actualCount; i++) {
-            this.users[i] = (User) userGroup.users[i].clone();
+            this.users[i] = userGroup.users[i].clone();
             this.actualCount++;
         }
     }
@@ -36,8 +36,10 @@ public class UserGroup {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return new UserGroup(this);
+    protected UserGroup clone() throws CloneNotSupportedException {
+        UserGroup userGroup = (UserGroup) super.clone();
+        userGroup.users = users.clone();
+        return userGroup;
     }
 
     @Override

@@ -27,8 +27,9 @@ public class User implements Cloneable {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return new User(this);
+    protected User clone() throws CloneNotSupportedException {
+        User user = (User) super.clone();
+        return user;
     }
 
     @Override

@@ -31,12 +31,12 @@ public final class ImmutablePoint implements Point, Cloneable {
     }
 
     @Override
-    public final double getX() {
+    public double getX() {
         return x;
     }
 
     @Override
-    public final double getY() {
+    public double getY() {
         return y;
     }
 
@@ -53,8 +53,9 @@ public final class ImmutablePoint implements Point, Cloneable {
     }
 
     @Override
-    public Point clone() {
-        return new ImmutablePoint(this);
+    public Point clone() throws CloneNotSupportedException {
+        Point clonedPoint = (Point) super.clone();
+        return clonedPoint;
     }
 
     @Override
