@@ -1,5 +1,6 @@
 package com.company.week5.homework.task1;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class CustomArrayList<T extends Comparable<T>> implements Iterable<T> {
@@ -120,9 +121,7 @@ public class CustomArrayList<T extends Comparable<T>> implements Iterable<T> {
             T[] tempArray;
             tempArray = (array.length * 2) < MAX_CAPACITY ? (T[]) new Comparable[array.length * 2] : (T[]) new Comparable[MAX_CAPACITY];
 
-            for (int i = 0; i < array.length; i++) {
-                tempArray[i] = array[i];
-            }
+            System.arraycopy(array, 0, tempArray, 0, array.length);
             array = tempArray;
         }
     }
