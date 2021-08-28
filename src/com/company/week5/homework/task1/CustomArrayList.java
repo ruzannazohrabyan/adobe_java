@@ -1,6 +1,8 @@
 package com.company.week5.homework.task1;
 
-public class CustomArrayList<T extends Comparable<T>> {
+import java.util.Iterator;
+
+public class CustomArrayList<T extends Comparable<T>> implements Iterable<T> {
 
     private final int DEFAULT_CAPACITY = 10;
     private final int MAX_CAPACITY = 1000;
@@ -14,19 +16,19 @@ public class CustomArrayList<T extends Comparable<T>> {
 
     public CustomArrayList(int size) {
         if (size > MAX_CAPACITY) {
-            throw new IllegalArgumentException(size + " is greater than maximum capacity (" + MAX_CAPACITY + ")");
+            throw new CustomException(size + " is greater than maximum capacity (" + MAX_CAPACITY + ")");
         }
         array = (T[]) new Comparable[size];
     }
 
     public void add(T element) {
-        expandIfNeeded();
+        expandArray();
         array[size++] = element;
     }
 
     public void add(int index, T element) {
-        checkIndexValidation(index);
-        expandIfNeeded();
+        indexValidation(index);
+        expandArray();
         T[] temp = (T[]) new Comparable[size + 1];
         for (int i = 0; i < temp.length; i++) {
             if (i < index) {
@@ -46,12 +48,12 @@ public class CustomArrayList<T extends Comparable<T>> {
     }
 
     public T get(int index) {
-        checkIndexValidation(index);
+        indexValidation(index);
         return array[index];
     }
 
     public T deleteByIndex(int index) {
-        checkIndexValidation(index);
+        indexValidation(index);
         T[] temp = (T[]) new Comparable[size - 1];
         T deletedElement = array[index];
         for (int i = 0; i < size; i++) {
@@ -113,7 +115,7 @@ public class CustomArrayList<T extends Comparable<T>> {
         return size;
     }
 
-    private void expandIfNeeded() {
+    private void expandArray() {
         if (size == array.length) {
             T[] tempArray;
             tempArray = (array.length * 2) < MAX_CAPACITY ? (T[]) new Comparable[array.length * 2] : (T[]) new Comparable[MAX_CAPACITY];
@@ -125,9 +127,12 @@ public class CustomArrayList<T extends Comparable<T>> {
         }
     }
 
-    private void checkIndexValidation(int index) {
-        if (index >= size || index < 0 || index >= MAX_CAPACITY) {
-            throw new IndexOutOfBoundsException(index + " is out of bound");
+    private void indexValidation(int index) {
+        if (index >= MAX_CAPACITY) {
+            throw new CustomException("Max capacity is " + MAX_CAPACITY + ".");
+        }
+        if (index >= size || index < 0) {
+            throw new CustomException(index + " is out of bound.");
         }
     }
 
@@ -139,5 +144,22 @@ public class CustomArrayList<T extends Comparable<T>> {
             stringBuilder.append(array[i]).append(" ");
         }
         return stringBuilder.toString();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private int index = 0;
+            @Override
+            public boolean hasNext() {
+                return index < size;
+            }
+
+            @Override
+            public T next() {
+
+                return array[index++];
+            }
+        };
     }
 }
