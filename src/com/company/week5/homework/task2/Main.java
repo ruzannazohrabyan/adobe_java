@@ -43,6 +43,7 @@ public class Main {
         System.out.println(list);
 //        list.add(100, 70);
 //        list.add(-1,  -1);
+
         list.add(20);
     }
 }
