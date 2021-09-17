@@ -1,4 +1,4 @@
-package com.company.week11.homework;
+package com.company.week11.homework.runnable;
 
 import java.io.File;
 import java.io.FileOutputStream;
