@@ -16,21 +16,26 @@ public class Main {
         File[] files = directory.listFiles();
 
         ((Runnable) () -> {
-            try {
-                for (File file : files) {
-                    BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-                    String line;
-                    while ((line = bufferedReader.readLine()) != null) {
-                        for (String s : pattern) {
-                            if (s.equals(line)) {
-                                System.out.println(file.getName() + " contains " + line);
-                            }
-                        }
-                    }
-                }
-            } catch (IOException ex) {
-                System.out.println("Error occurred: " + ex.getMessage());
+            for (File file : files) {
+                printMatchLines(file, pattern);
             }
         }).run();
     }
+
+    public static void printMatchLines(File file, String[] pattern){
+        try{
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                for (String s : pattern) {
+                    if (s.equals(line)) {
+                        System.out.println(file.getName() + " contains " + line);
+                    }
+                }
+            }
+        } catch (IOException ex) {
+            System.out.println("Error occurred: " + ex.getMessage());
+        }
+    }
+
 }
