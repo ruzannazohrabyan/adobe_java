@@ -1,6 +1,9 @@
 package com.company.week6.classwork.task3;
 
-public class Stack<T> implements Stackable<T> {
+import java.util.*;
+import java.util.function.Consumer;
+
+public class Stack<T> implements Stackable<T>{
     private final T[] objects;
     private static final int STACK_MAX_SIZE = 10;
     private int index = 0;
@@ -28,4 +31,26 @@ public class Stack<T> implements Stackable<T> {
         }
         return objects[--index];
     }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Itr();
+    }
+
+
+
+    private class Itr implements Iterator<T> {
+        private int cursor;
+
+        public boolean hasNext() {
+            return cursor != index;
+        }
+
+        public T next() {
+            return  objects[cursor++];
+        }
+    }
+
+
+
 }

@@ -1,5 +1,7 @@
 package com.company.week5.homework.task2;
 
+import java.util.Collection;
+
 public class Main {
     public static void main(String[] args) {
         CustomDoublyLinkList<Integer> list = new CustomDoublyLinkList<>();
@@ -43,7 +45,6 @@ public class Main {
         System.out.println(list);
 //        list.add(100, 70);
 //        list.add(-1,  -1);
-
-        list.add(20);
+          list.add(20);
     }
 }

@@ -1,16 +1,27 @@
 package com.company.week6.classwork.task3;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class Main {
     public static void main(String[] args) {
-        Stackable<Integer> stack = new Stack<>();
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        System.out.println(stack.pop());
-        System.out.println(stack.pop());
-        stack.push(5);
-        stack.push(4);
-        stack.push(6);
+        Stackable<String> stack = new Stack<>();
+        stack.push("a");
+        stack.push("b");
+        stack.push("c");
+
+        for(String s : stack) {
+            System.out.println(s);
+        }
+
+
+
+        Iterator<String> iterator = stack.iterator();
+        while (iterator.hasNext()) {
+            if(iterator.next().equals("b"))
+            iterator.remove();
+        }
     }
 }
 
