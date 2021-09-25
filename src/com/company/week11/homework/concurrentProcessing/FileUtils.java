@@ -31,5 +31,6 @@ public class FileUtils {
         FileGenerator fileGenerator = new FileGenerator(filePath);
         fileGenerator.run();
         fileQueue.add(filePath);
+        notifyAll();
     }
 }
