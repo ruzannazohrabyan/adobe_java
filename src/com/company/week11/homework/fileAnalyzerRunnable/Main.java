@@ -14,7 +14,6 @@ public class Main {
                 "1431c49d-6e73-4980-8010-4d87144b6ca6", "376372b9-94a6-4c4e-a20b-32160f665c0b"};
         File directory = new File("src\\com\\company\\week11\\homework\\fileGeneratorRunnable\\files");
         File[] files = directory.listFiles();
-
         ((Runnable) () -> {
             for (File file : files) {
                 printMatchLines(file, words);
