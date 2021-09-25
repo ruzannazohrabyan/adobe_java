@@ -2,21 +2,20 @@ package com.company.week11.homework.concurrentProcessing;
 
 import com.company.week11.homework.fileGeneratorRunnable.FileGenerator;
 
-import java.io.File;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 public class FileUtils {
-    private final String folderName;
+    private final String directoryName;
     private final int processedFileCount = 0;
-    private BlockingQueue<File> fileQueue = new ArrayBlockingQueue<>(10);
+    private BlockingQueue<String> fileQueue = new ArrayBlockingQueue<>(10);
 
-    public FileUtils(String folderName) {
-        this.folderName = folderName;
+    public FileUtils(String directoryName) {
+        this.directoryName = directoryName;
     }
 
-    public synchronized void getFile() throws InterruptedException {
-        while(fileQueue.size() == 0) {
+    public synchronized void processFile() throws InterruptedException {
+        while (fileQueue.size() == 0) {
             wait();
         }
         FileContentProcessor contentProcessor = new FileContentProcessor(fileQueue.poll(), "ab");
@@ -24,13 +23,13 @@ public class FileUtils {
         notifyAll();
     }
 
-    public synchronized void createFiles(int count) throws InterruptedException {
-        int fileCount = 0;
-        while(true){
-            FileGenerator fileGenerator = new FileGenerator(folderName);
+    public synchronized void addFile(String filename) throws InterruptedException {
+        while (fileQueue.size() == 10) {
+            wait();
         }
-
-//        fileGenerator.run();
-
+        String filePath = directoryName + filename;
+        FileGenerator fileGenerator = new FileGenerator(filePath);
+        fileGenerator.run();
+        fileQueue.add(filePath);
     }
 }

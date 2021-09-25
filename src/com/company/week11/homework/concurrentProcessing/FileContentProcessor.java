@@ -6,15 +6,15 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class FileContentProcessor implements Runnable {
-    private final File file;
+    private final String file;
     private final String subString;
 
-    public FileContentProcessor(File file, String subString) {
+    public FileContentProcessor(String file, String subString) {
         this.file = file;
         this.subString = subString;
     }
 
-    private int countMatches(File file, String subString) {
+    private int countMatches(String file, String subString) {
         int count = 0;
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
@@ -33,6 +33,6 @@ public class FileContentProcessor implements Runnable {
 
     @Override
     public void run() {
-        System.out.println(file.getName() + " -- "  + countMatches(file, subString));
+        System.out.println(file + " -- "  + countMatches(file, subString));
     }
 }

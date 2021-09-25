@@ -3,31 +3,41 @@ package com.company.week11.homework.concurrentProcessing;
 import com.company.week11.homework.fileGeneratorRunnable.FileGenerator;
 
 import java.io.File;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.UUID;
+import java.util.concurrent.*;
 
 public class Main {
-    public static void main(String[] args) {
-        File folder = new File("src\\com\\company\\week11\\homework\\concurrentProcessing\\files");
-        File[] files = folder.listFiles();
-
-        BlockingQueue<File> blockingQueue = new ArrayBlockingQueue<>(10);
-
-        //        Generating 10 files with random content
-//        FileGenerator fileGenerator = new FileGenerator(folder.getPath()+"\\files", 10);
-//        fileGenerator.run();
-
-        while(blockingQueue.size()!=10) {
-//            File[] files = folder.listFiles();
-//            if(blockingQueue.contains())
-        }
+    public static void main(String[] args) throws InterruptedException {
+        String folderName = "src\\com\\company\\week11\\homework\\concurrentProcessing\\files";
 
         ExecutorService threadPool = Executors.newFixedThreadPool(10);
-        for (File file : files) {
-            FileContentProcessor fileContentProcessor = new FileContentProcessor(file, "ab");
-            threadPool.execute(fileContentProcessor);
+
+        FileUtils directory = new FileUtils(folderName);
+
+        for (int i = 0; i < 10; i++) {
+            threadPool.submit(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        directory.addFile("\\file " + UUID.randomUUID());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+
+        for (int i = 0; i < 10; i++) {
+            threadPool.submit(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        directory.processFile();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
         threadPool.shutdown();
     }
