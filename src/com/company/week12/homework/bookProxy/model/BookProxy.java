@@ -18,7 +18,7 @@ public class BookProxy extends Book{
         flag = loaded;
     }
 
-    public void Load() throws InstanceAlreadyExistsException {
+    public void load() throws InstanceAlreadyExistsException {
         if(isLoaded()) {
             throw new InstanceAlreadyExistsException("Book already Loaded");
         }
