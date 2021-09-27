@@ -32,6 +32,9 @@ public class AssertionTool {
     }
 
     public static boolean assertSizeOfCollection(Collection<?> collection, int size) {
-        return collection.size() == size;
+        if(collection.size()!=size) {
+            throw new RuntimeException("Size Mismatch");
+        }
+        return true;
     }
 }
