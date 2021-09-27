@@ -5,17 +5,16 @@ import com.company.week11.homework.concurrentProcessing.FileContentProcessor;
 import java.io.File;
 import java.util.*;
 
-public class SharedList implements Runnable {
+public class SharedList {
     private List<String> list = new LinkedList<>();
 
-    private synchronized void addToList(File file) {
+    public synchronized void addToList(File file) {
         ContentProcessor contentProcessor = new ContentProcessor(file, "ab");
         String result = contentProcessor.getResult();
-         list.add(result);
+        list.add(result);
     }
 
-    @Override
-    public void run() {
-
+    public List<String> getList() {
+        return list;
     }
 }

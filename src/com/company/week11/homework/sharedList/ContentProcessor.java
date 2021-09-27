@@ -14,7 +14,7 @@ public class ContentProcessor {
         this.subString = subString;
     }
 
-    public String getResult(){
+    public String getResult() {
         int count = 0;
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
@@ -28,6 +28,6 @@ public class ContentProcessor {
         } catch (IOException ex) {
             System.out.println("Error occurred: " + ex.getMessage());
         }
-        return file.getName() + count;
+        return file.getName() + " -- " + count;
     }
 }
