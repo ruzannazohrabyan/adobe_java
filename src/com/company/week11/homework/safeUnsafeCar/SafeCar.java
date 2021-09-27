@@ -1,8 +1,9 @@
 package com.company.week11.homework.safeUnsafeCar;
 
-public class SafeCar implements Car{
+public class SafeCar implements Car {
     private final String[] passengerNames = new String[6];
     private int count = 0;
+
     @Override
     public synchronized void add(String passengerName) {
         if (count == 6) {
@@ -13,7 +14,7 @@ public class SafeCar implements Car{
 
     @Override
     public void printPassengerNames() {
-        if(count!=0) {
+        if (count != 0) {
             for (String name : passengerNames) {
                 System.out.println(name);
             }

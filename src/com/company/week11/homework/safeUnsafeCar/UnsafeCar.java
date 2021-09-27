@@ -14,7 +14,7 @@ public class UnsafeCar implements Car {
 
     @Override
     public void printPassengerNames() {
-        if(count!=0) {
+        if (count != 0) {
             for (String name : passengerNames) {
                 System.out.println(name);
             }
