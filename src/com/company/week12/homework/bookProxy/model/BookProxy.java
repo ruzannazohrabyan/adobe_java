@@ -14,15 +14,12 @@ public class BookProxy extends Book{
         return flag;
     }
 
-    public void setLoaded(boolean loaded) {
-        flag = loaded;
-    }
 
     public void load() throws InstanceAlreadyExistsException {
         if(isLoaded()) {
             throw new InstanceAlreadyExistsException("Book already Loaded");
         }
-        setLoaded(true);
+        flag = true;
     }
 
     @Override
