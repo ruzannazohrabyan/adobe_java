@@ -11,7 +11,7 @@ public class Main {
         List<String> sharedList = new ArrayList<>();
         List<Thread> threadList = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i <files.length; i++) {
             File file = files[i];
             threadList.add(new Thread(() -> {
                 String result = fileContentProcessor.getResult(file, "ab");
