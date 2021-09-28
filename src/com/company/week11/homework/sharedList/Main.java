@@ -7,24 +7,22 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         File directory = new File("src\\com\\company\\week11\\homework\\sharedList\\files");
         File[] files = directory.listFiles();
-//        ContentProcessor fileContentProcessor = new ContentProcessor();
-//        String str = new ContentProcessor().getResult()
-
-        List<String> sharedList = Collections.synchronizedList(new ArrayList<>());
+        SharedList sharedList = new SharedList();
         List<Thread> threadList = new ArrayList<>();
 
         for (File file : files) {
             threadList.add(new Thread(() -> {
                 String result = new ContentProcessor().getResult(file, "ab");
-                sharedList.add(result);
-                System.out.println(result);
+                sharedList.addToList(result);
             }));
         }
 
         for (Thread thread : threadList) {
             thread.start();
+        }
+        for (Thread thread : threadList) {
             thread.join();
         }
-        System.out.println(sharedList);
+        sharedList.printList();
     }
 }
