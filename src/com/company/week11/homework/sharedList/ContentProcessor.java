@@ -6,15 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ContentProcessor {
-    private final File file;
-    private final String subString;
 
-    public ContentProcessor(File file, String subString) {
-        this.file = file;
-        this.subString = subString;
-    }
-
-    public String getResult() {
+    public synchronized String getResult(File file, String subString) {
         int count = 0;
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
